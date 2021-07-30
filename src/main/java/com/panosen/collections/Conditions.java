@@ -6,8 +6,6 @@ import java.util.List;
 
 /**
  * of Must or Should
- *
- * @param <TValue>
  */
 public abstract class Conditions<TValue> extends Condition<TValue> {
 
