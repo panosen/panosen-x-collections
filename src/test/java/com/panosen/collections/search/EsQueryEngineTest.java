@@ -81,9 +81,10 @@ public class EsQueryEngineTest {
 
     /**
      * 获取本次需要使用到的规则列表
-     * 【扩展1】从数据库中获取SearchRuleList
-     * 【扩展2】扩展返回类型，为每个搜索规则增加权重
-     * 【扩展3】修改返回类型，不再返回列表，改为返回一个树列表。在数据库中定制每个树
+     * 【扩展1】根据传参获取SearchRuleList
+     * 【扩展2】从数据库中获取SearchRuleList
+     * 【扩展3】扩展返回类型，为每个搜索规则增加权重
+     * 【扩展4】修改返回类型，不再返回列表，改为返回一个树列表。在数据库中定制每个树
      */
     private List<SearchRule> buildSearchRuleList(String channel) {
         if (Strings.isNullOrEmpty(channel)) {
