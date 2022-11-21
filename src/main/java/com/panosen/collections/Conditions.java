@@ -9,7 +9,7 @@ import java.util.List;
  */
 public abstract class Conditions<TValue> extends Condition<TValue> {
 
-    private List<Condition<TValue>> items;
+    protected List<Condition<TValue>> items;
 
     public List<Condition<TValue>> getItems() {
         return items;
@@ -25,16 +25,6 @@ public abstract class Conditions<TValue> extends Condition<TValue> {
         }
         this.items.add(single);
         return this;
-    }
-
-    public Single<TValue> addSingle(TValue value) {
-        if (this.items == null) {
-            this.items = Lists.newArrayList();
-        }
-        Single<TValue> single = new Single<>();
-        single.setValue(value);
-        this.items.add(single);
-        return single;
     }
 
     public Must<TValue> addMust() {
