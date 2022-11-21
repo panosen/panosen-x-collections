@@ -10,20 +10,19 @@ import org.elasticsearch.index.query.BoolQueryBuilder;
 import org.elasticsearch.index.query.QueryBuilder;
 import org.elasticsearch.index.query.QueryBuilders;
 import org.junit.Test;
-import org.springframework.beans.factory.annotation.Autowired;
 
 import java.util.List;
 
 public class EsQueryEngineTest {
 
-    @Autowired
-    private SearchRuleA searchRuleA;
+    //@Autowired
+    private SearchRuleA searchRuleA = new SearchRuleA();
 
-    @Autowired
-    private SearchRuleB searchRuleB;
+    //@Autowired
+    private SearchRuleB searchRuleB = new SearchRuleB();
 
-    @Autowired
-    private SearchRuleC searchRuleC;
+    //@Autowired
+    private SearchRuleC searchRuleC = new SearchRuleC();
 
     @Test
     public void sample() {
@@ -36,9 +35,15 @@ public class EsQueryEngineTest {
 
         //中间态的表达式树
         Must<QueryBuilder> queryTree = buildQueryTree(searchRequest);
+        if (queryTree == null) {
+            return;
+        }
 
         //构建最终提交给ES的QueryBuilder
         QueryBuilder finalQueryBuilder = parse(queryTree);
+        if (finalQueryBuilder == null) {
+            return;
+        }
 
         //提交搜索
         SearchResponse searchResponse = visitEs(finalQueryBuilder);
@@ -70,6 +75,7 @@ public class EsQueryEngineTest {
 
             must.addCondition(condition);
         }
+
         return must;
     }
 
@@ -114,6 +120,9 @@ public class EsQueryEngineTest {
 
         if (condition instanceof Must) {
             Must<QueryBuilder> must = (Must<QueryBuilder>) condition;
+            if (must.getItems() == null || must.getItems().isEmpty()) {
+                return null;
+            }
             if (must.getItems().size() == 1) {
                 return parse(must.getItems().get(0));
             }
@@ -127,6 +136,9 @@ public class EsQueryEngineTest {
 
         if (condition instanceof Should) {
             Should<QueryBuilder> should = (Should<QueryBuilder>) condition;
+            if (should.getItems() == null || should.getItems().isEmpty()) {
+                return null;
+            }
             if (should.getItems().size() == 1) {
                 return parse(should.getItems().get(0));
             }

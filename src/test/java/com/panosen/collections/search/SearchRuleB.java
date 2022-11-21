@@ -5,14 +5,13 @@ import com.panosen.collections.Must;
 import org.elasticsearch.common.Strings;
 import org.elasticsearch.index.query.QueryBuilder;
 import org.elasticsearch.index.query.QueryBuilders;
-import org.springframework.stereotype.Component;
 
-@Component
+//@Component
 public class SearchRuleB extends SearchRule {
 
     @Override
     public boolean disabled() {
-        return true;
+        return false;
     }
 
     @Override
