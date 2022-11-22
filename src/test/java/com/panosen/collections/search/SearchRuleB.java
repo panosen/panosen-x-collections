@@ -1,10 +1,10 @@
 package com.panosen.collections.search;
 
+import com.google.common.base.Strings;
 import com.panosen.collections.Condition;
 import com.panosen.collections.Must;
-import org.elasticsearch.common.Strings;
-import org.elasticsearch.index.query.QueryBuilder;
-import org.elasticsearch.index.query.QueryBuilders;
+import com.panosen.collections.elasticsearch.QueryBuilder;
+import com.panosen.collections.elasticsearch.QueryBuilders;
 
 //@Component
 public class SearchRuleB extends SearchRule {

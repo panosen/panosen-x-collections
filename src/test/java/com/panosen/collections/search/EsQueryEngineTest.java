@@ -1,14 +1,14 @@
 package com.panosen.collections.search;
 
+import com.google.common.base.Strings;
 import com.google.common.collect.Lists;
 import com.panosen.collections.Condition;
 import com.panosen.collections.Must;
 import com.panosen.collections.Should;
 import com.panosen.collections.Single;
-import org.elasticsearch.common.Strings;
-import org.elasticsearch.index.query.BoolQueryBuilder;
-import org.elasticsearch.index.query.QueryBuilder;
-import org.elasticsearch.index.query.QueryBuilders;
+import com.panosen.collections.elasticsearch.BoolQueryBuilder;
+import com.panosen.collections.elasticsearch.QueryBuilder;
+import com.panosen.collections.elasticsearch.QueryBuilders;
 import org.junit.Test;
 
 import java.util.List;

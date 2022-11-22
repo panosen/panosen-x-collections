@@ -1,7 +1,7 @@
 package com.panosen.collections.search;
 
 import com.panosen.collections.Condition;
-import org.elasticsearch.index.query.QueryBuilder;
+import com.panosen.collections.elasticsearch.QueryBuilder;
 
 public abstract class SearchRule {
 
